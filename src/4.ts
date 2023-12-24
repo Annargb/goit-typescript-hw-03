@@ -11,11 +11,8 @@
 // Після реалізації всіх класів створіть об'єкти для кожного класу та спробуйте відтворити сценарій, в якому людина приходить додому.
 
 class Key {
-    private signature: number;
-    constructor() {
-        this.signature = Math.random();
-    }
-
+    private signature: number = Math.random();
+   
     getSignature(): number {
         return this.signature;
     }
@@ -33,15 +30,10 @@ class Person {
 }
 
 abstract class House {
-    protected tenants: Person[];
-    protected door: boolean;
-    protected key: Key;
+    protected tenants: Person[] = [];
+    protected door: boolean = false;
 
-    constructor(key: Key) {
-        this.tenants = [];
-        this.door = false;
-        this.key = key;
-    }
+     constructor(protected key: Key) {}
 
     comeIn(person: Person): void {
         if (this.door) {
@@ -53,9 +45,6 @@ abstract class House {
 }
 
 class MyHouse extends House {
-    constructor(key: Key) {
-        super(key);
-    }
     
     openDoor(newKey: Key): void {
         if (newKey.getSignature() === this.key.getSignature()) {
