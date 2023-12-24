@@ -61,4 +61,4 @@ house.openDoor(person.getKey());
 house.comeIn(person);
 
 
-export {};
+export {Key, Person, MyHouse};
